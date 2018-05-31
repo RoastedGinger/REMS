@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="com.example.user.rems.Login"
+    android:weightSum="1">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rent House"
+        android:layout_gravity="center"
+
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:layout_above="@+id/ph"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:gravity="center"
+        android:padding="5dp"
+        android:src="@drawable/index2" />
+
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="53dp"
+        android:background="@drawable/des"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="User Name"
+        android:inputType=""
+        android:padding="10dp"
+        tools:ignore="HardcodedText,LabelFor,UnknownIdInLayout" />
+
+    <EditText
+        android:id="@+id/phn"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/des"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:padding="10dp"
+
+        android:hint="Phone Number"
+        tools:ignore="HardcodedText,LabelFor,UnknownIdInLayout" />
+
+    <EditText
+        android:id="@+id/pss"
+        android:layout_width="271dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/des"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        tools:ignore="HardcodedText,LabelFor,UnknownIdInLayout" />
+
+    <EditText
+        android:id="@+id/repss"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/des"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Re enter Password "
+        android:inputType="textPassword"
+        android:padding="10dp"
+        tools:ignore="HardcodedText,LabelFor,UnknownIdInLayout" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="i agreed all the terms and condition"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn"
+        android:onClick="save_info"
+        android:text="@string/sign_up"
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimaryDark" />
+
+</LinearLayout>
+</ScrollView>
+

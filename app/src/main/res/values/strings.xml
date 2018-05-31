@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">REMS</string>
+    <string name="or">OR</string>
+    <string name="title_activity_main2">Rent House</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="i_agreed_all_terms_and_condition">I agreed all terms and condition</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="textview">TextView</string>
+
+    <string-array name="FLAT">
+        <item>Select Flat type</item>
+        <item>1 BHK</item>
+        <item>2 BHK</item>
+        <item>3 BHK</item>
+    </string-array>
+
+    <string-array name="CITY">
+        <item>Select Location</item>
+        <item>Gangtok</item>
+        <item>Tadong</item>
+        <item>Ranipool</item>
+        <item>5th mile</item>
+        <item>6th mile</item>
+        <item>Deorali</item>
+    </string-array>
+
+    <string-array name="HOUSE">
+        <item>Select House Type</item>
+        <item>1 BHK</item>
+        <item>2 BHK</item>
+        <item>3 BHK</item>
+    </string-array>
+
+    <string-array name="PG">
+        <item>Select Flat type</item>
+        <item>1 person</item>
+        <item>2 person</item>
+        <item>3 person</item>
+        <item>4 person</item>
+        <item>5 person</item>
+        <item>more than 5+</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
