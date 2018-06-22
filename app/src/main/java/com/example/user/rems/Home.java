@@ -3,6 +3,7 @@ package com.example.user.rems;
 /**
  * Created by user on 14-May-18.
  */
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Home extends AppCompatActivity {
 
@@ -54,6 +56,25 @@ public class Home extends AppCompatActivity {
         adapter.addFragment(new search(), "Search");
         adapter.addFragment(new post(), "Post");
         viewPager.setAdapter(adapter);
+    }
+
+    private Boolean exit = false;
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            moveTaskToBack(true);
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+        }
     }
 
 }

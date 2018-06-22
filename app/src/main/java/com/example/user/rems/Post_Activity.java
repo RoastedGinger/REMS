@@ -39,14 +39,16 @@ public class Post_Activity extends AppCompatActivity implements View.OnClickList
     ImageView image;
     private final int img=1;
     Bitmap bitmap;
-    String Server_url = "https://rentalsolution.000webhostapp.com/image.php",city,property;
+   // String Server_url = "https://rentalsolution.000webhostapp.com/image.php",city,property;
+
+    String Server_url = "https://rentalsolution.000webhostapp.com/Rentalhouse/Login/Login_v2/uploadimage.php",city,property;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_);
         upload = (Button)findViewById(R.id.upload);
         choose = (Button)findViewById(R.id.choose);
-        name = (EditText) findViewById(R.id.name);
+        //name = (EditText) findViewById(R.id.name);
         image = (ImageView)findViewById(R.id.image);
         ocontact = (EditText)findViewById(R.id.contact);
         address = (EditText)findViewById(R.id.main_address);
@@ -120,7 +122,7 @@ public class Post_Activity extends AppCompatActivity implements View.OnClickList
                  bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
                  image.setImageBitmap(bitmap);
                  image.setVisibility(View.VISIBLE);
-                 name.setVisibility(View.VISIBLE);
+//                 name.setVisibility(View.VISIBLE);
              } catch (IOException e) {
                  e.printStackTrace();
              }
@@ -139,8 +141,6 @@ public class Post_Activity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(Post_Activity.this,Response,Toast.LENGTH_LONG).show();
                             image.setImageResource(0);
                             image.setVisibility(View.GONE);
-                            name.setText("");
-                            name.setVisibility(View.GONE);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -153,7 +153,7 @@ public class Post_Activity extends AppCompatActivity implements View.OnClickList
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("name",name.getText().toString().trim());
+              //  params.put("name",name.getText().toString().trim());
                 params.put("city",city);
                 params.put("property",property);
                 params.put("onumber",ocontact.getText().toString().trim());

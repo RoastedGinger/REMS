@@ -28,7 +28,7 @@ public class add extends Fragment {
         WebView webView=(WebView) rootView.findViewById(R.id.webviewsearch);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://rentalsolution.000webhostapp.com/Rentalhouse/Login/Login_v2/home1.html");
+        webView.loadUrl("https://rentalsolution.000webhostapp.com/Rentalhouse/Login/Login_v2/home1.php");
 
         return rootView;
     }

@@ -37,19 +37,7 @@ public class signUp extends AppCompatActivity {
         repass=(EditText)findViewById(R.id.repss);
         button = (Button)findViewById(R.id.sign_up);
         checkBox = (CheckBox)findViewById(R.id.checkBox);
-
-
-
-       //button.setEnabled(false);
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (((CheckBox) v).isChecked() || name!=null|| phno!=null || passwd!=null) {
-                    button.setEnabled(true);
-                }
-            }
-        });
-
+        button.setEnabled(false);
         EditText yourEditText = (EditText) findViewById(R.id.pss);
         yourEditText.setFilters(new InputFilter[] {
                 new InputFilter() {
@@ -67,8 +55,13 @@ public class signUp extends AppCompatActivity {
                     }
                 }
         });
-
-
+           checkBox.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   if(checkBox.isChecked())
+                   button.setEnabled(true);
+               }
+           });
     }
 
 
@@ -81,37 +74,41 @@ public class signUp extends AppCompatActivity {
         backgroundTask.execute(uname,upass,uphno);
        // finish();
     }
-    class BackgroundTask extends AsyncTask<String,Void,String>
-    {
-       String add_url;
+
+    class BackgroundTask extends AsyncTask<String,Void,String> {
+        String add_url;
+
         @Override
-        protected  void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             Toast.makeText(signUp.this, result, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(signUp.this,Login.class);
+            startActivity(intent);
         }
+
         @Override
         protected String doInBackground(String... args) {
-            String name,phno,pass;
+            String name, phno, pass;
             name = args[0];
             pass = args[1];
             phno = args[2];
             try {
                 URL url = new URL(add_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-                String data_string = URLEncoder.encode("name","UTF-8")+"="+URLEncoder.encode(name,"UTF-8")+"&"+
-                        URLEncoder.encode("passwd","UTF-8")+"="+URLEncoder.encode(pass,"UTF-8")+"&"+
-                        URLEncoder.encode("mobile","UTF-8")+"="+URLEncoder.encode(phno,"UTF-8");
-                        bufferedWriter.write(data_string);
-                        bufferedWriter.flush();
-                         bufferedWriter.close();
-                          outputStream.close();
-                       InputStream inputStream = httpURLConnection.getInputStream();
-                       inputStream.close();
-                       httpURLConnection.disconnect();
-                       return "one user inserted";
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String data_string = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
+                        URLEncoder.encode("passwd", "UTF-8") + "=" + URLEncoder.encode(pass, "UTF-8") + "&" +
+                        URLEncoder.encode("mobile", "UTF-8") + "=" + URLEncoder.encode(phno, "UTF-8");
+                bufferedWriter.write(data_string);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return "Sign Up success";
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -119,17 +116,18 @@ public class signUp extends AppCompatActivity {
             }
             return null;
         }
+
         @Override
         protected void onProgressUpdate(Void... values) {
             super.onProgressUpdate(values);
         }
 
-        protected void onPreExecute()
-        {
-            add_url="http://rentalsolution.000webhostapp.com/REMS/add_info.php";
+        protected void onPreExecute() {
+            add_url = "http://rentalsolution.000webhostapp.com/REMS/add_info.php";
             //super.onPreExecute();
         }
     }
+
 
 
 }

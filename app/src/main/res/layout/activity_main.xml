@@ -94,6 +94,7 @@
         android:text="LOG IN"
         android:textColor="@color/colorPrimaryDark"
         tools:ignore="HardcodedText"
+        android:onClick="validate"
         android:layout_above="@+id/textView4"
         android:layout_toStartOf="@+id/textView2"
         android:layout_marginEnd="22dp" />
