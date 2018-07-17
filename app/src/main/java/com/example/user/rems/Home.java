@@ -3,6 +3,7 @@ package com.example.user.rems;
 /**
  * Created by user on 14-May-18.
  */
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -31,7 +32,7 @@ public class Home extends AppCompatActivity {
 
     private SectionsPageAdapter mSectionsPageAdapter;
 
-    private ViewPager mViewPager;
+    private ViewPager mViewPager;  public static final String MY_PREFS_NAME = "MyPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,5 +77,24 @@ public class Home extends AppCompatActivity {
             }, 3 * 1000);
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-}
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.log) {
+            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putString("UserID","0");
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+        }
+

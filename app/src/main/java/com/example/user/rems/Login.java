@@ -2,11 +2,14 @@ package com.example.user.rems;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -37,6 +40,7 @@ public class Login extends AppCompatActivity {
     EditText phnum, password;
     CheckBox checkBox;
     String pn,pass;
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
     String Server_url="https://rentalsolution.000webhostapp.com/REMS/validate.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,10 @@ public class Login extends AppCompatActivity {
                                    String res = response.toString().trim();
                                 if(res.equals(val))
                                 {
+                                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                                    editor.putString("UserID",pn);
+                                    editor.putInt("boolean",1);
+                                    editor.apply();
                                     Toast.makeText(Login.this,"Welcome User"+res, Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(Login.this,Home.class);
                                     startActivity(intent);
@@ -113,7 +121,28 @@ public class Login extends AppCompatActivity {
         });
 
     }
-
+    private Boolean exit = false;
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            moveTaskToBack(true);
+            Intent intent = new Intent(getApplicationContext(),Splash.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("EXIT", true);
+            startActivity(intent);
+             // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+        }
+    }
 
 
 }
